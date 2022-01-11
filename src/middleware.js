@@ -1,3 +1,4 @@
+import videojs from 'video.js';
 videojs.use('*', function(player) {
   return {
     setSource: function(srcObj, next) {
