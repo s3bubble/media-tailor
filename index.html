@@ -1,27 +1,42 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>videojs-s3bubble-mediatailor Demo</title>
-  <link href="node_modules/video.js/dist/video-js.css" rel="stylesheet">
-  <link href="dist/videojs-s3bubble-mediatailor.css" rel="stylesheet">
-</head>
-<body>
-  <video id="videojs-s3bubble-mediatailor-player" class="video-js vjs-default-skin" controls>
-    <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
-    <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'>
-  </video>
-  <ul>
-    <li><a href="/test/debug.html">Run unit tests in browser.</a></li>
-    <li><a href="docs/api/">Read generated docs.</a></li>
-  </ul>
-  <script src="node_modules/video.js/dist/video.js"></script>
-  <script src="dist/videojs-s3bubble-mediatailor.js"></script>
-  <script>
-    (function(window, videojs) {
-      var examplePlayer = window.examplePlayer = videojs('videojs-s3bubble-mediatailor-player');
-      var s3BubbleMediatailor = window.s3BubbleMediatailor = examplePlayer.s3BubbleMediatailor();
-    }(window, window.videojs));
-  </script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>videojs-s3bubble-mediatailor Demo</title>
+    <link href="node_modules/video.js/dist/video-js.css" rel="stylesheet" />
+    <link href="dist/videojs-s3bubble-mediatailor.css" rel="stylesheet" />
+    <link
+      href="https://unpkg.com/videojs-markers-plugin@1.0.2/dist/videojs.markers.plugin.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <video
+      id="videojs-s3bubble-mediatailor-player"
+      class="video-js vjs-default-skin"
+      controls
+      width="1280"
+      muted
+    ></video>
+    <ul>
+      <li><a href="/test/debug.html">Run unit tests in browser.</a></li>
+      <li><a href="docs/api/">Read generated docs.</a></li>
+    </ul>
+    <script src="node_modules/video.js/dist/video.js"></script>
+    <script src="dist/videojs-s3bubble-mediatailor.js"></script>
+    <script src="https://unpkg.com/videojs-contrib-dash/dist/videojs-dash.js"></script>
+    <script src="https://unpkg.com/videojs-markers-plugin/dist/videojs-markers-plugin.min.js"></script>
+    <script>
+      (function (window, videojs) {
+        var examplePlayer = (window.examplePlayer = videojs(
+          "videojs-s3bubble-mediatailor-player"
+        ));
+        examplePlayer.src({
+          src: "https://2cb49dec089e4b488790a584bfb7ac13.mediatailor.us-east-1.amazonaws.com/v1/master/d02fedbbc5a68596164208dd24e9b48aa60dadc7/r46d0g-1639645677/master.m3u8",
+          type: "application/x-mpegurl",
+        });
+        var Mediatailor = (window.Mediatailor = examplePlayer.Mediatailor());
+      })(window, window.videojs);
+    </script>
+  </body>
 </html>

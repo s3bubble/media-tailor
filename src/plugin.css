@@ -1,5 +1,5 @@
 /**
- * css for videojs-s3bubble-mediatailor
+ * css for videojs-ssai-mediatailor
  * With the default plugins for postcss you can
  * - @import files, they will be inlined during build
  * - not worry about browser prefixes, they will be handled
@@ -9,7 +9,6 @@
  *   https://www.w3.org/TR/css-variables-1/
  */
 
-
 /* Note: all vars must be defined here, there are no "local" vars */
 :root {
   --main-color: red;
@@ -18,12 +17,13 @@
 }
 
 .video-js {
-
-  &.vjs-s3bubble-mediatailor {
+  &.vjs-ssai-mediatailor {
     /* This class is added to the video.js element by the plugin by default. */
     display: block;
 
-    & .remove-me, & .remove-me-too, &.finally-remove-me {
+    & .remove-me,
+    & .remove-me-too,
+    &.finally-remove-me {
       /* examples of postcss syntax, you probably want to remove this */
 
       color: var(--main-color);
@@ -34,7 +34,24 @@
        * `calc(10 * var(--base-font-size)em` will NOT work!
        */
       font-size: calc(var(--font-size) * 8 * var(--base-font-size) * 1px);
-
     }
   }
+}
+.video-js .vjs-ad-box {
+  background: rgb(0 0 0 / 70%);
+  color: #fff;
+  padding: 0.5em;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: auto;
+  font-size: 13px;
+  border-radius: 3px;
+  transition: opacity 1s ease-in-out;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  opacity: 0;
+}
+.video-js .vjs-ad-box.animated {
+  opacity: 1;
 }
