@@ -1,6 +1,6 @@
 {
   "name": "@s3bubble/videojs-s3bubble-mediatailor",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Mediatailor",
   "main": "cjs/plugin.js",
   "module": "es/plugin.js",
