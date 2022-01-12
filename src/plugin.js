@@ -130,12 +130,10 @@ class S3BubbleMediatailor extends Plugin {
           } else {
             this.options.countDown++;
           }
-          //this.player.controlBar.progressControl.el().style.pointerEvents = "none";
         } else {
           this.player.getChild('adBox').removeClass('animated');
           this.options.countDown = 0;
           this.options.adIsPlaying = false;
-          //this.player.controlBar.progressControl.el().style.pointerEvents = "unset";
         }
       }
 
