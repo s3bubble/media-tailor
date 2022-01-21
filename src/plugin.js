@@ -152,21 +152,23 @@ class S3BubbleMediatailor extends Plugin {
     videojs.xhr.get(this.options.trackingUrl, (err, resp) => {
       const data = JSON.parse(resp.body);
       let markers = [];
-      data.avails.forEach((element) => {
-        this.options.adPositions.push({
-          data: element,
-          availId: element.availId,
-          start: element.startTimeInSeconds,
-          end:
-            element.startTimeInSeconds + element.durationInSeconds,
+      if (Array.isArray(data.avails)) {
+        data.avails.forEach((element) => {
+          this.options.adPositions.push({
+            data: element,
+            availId: element.availId,
+            start: element.startTimeInSeconds,
+            end:
+              element.startTimeInSeconds + element.durationInSeconds,
+          });
+          markers.push({
+            availId: element.availId,
+            time: element.startTimeInSeconds,
+            duration: element.durationInSeconds,
+            text: "Ads",
+          });
         });
-        markers.push({
-          availId: element.availId,
-          time: element.startTimeInSeconds,
-          duration: element.durationInSeconds,
-          text: "Ads",
-        });
-      });
+      }
       this.player.markers.reset(markers);
     });
   }
